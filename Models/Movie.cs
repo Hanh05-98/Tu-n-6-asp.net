@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 
 namespace week6.Models
 {
@@ -10,7 +11,7 @@ namespace week6.Models
 
         [Required(ErrorMessage = "Vui lòng nhập tên phim")]
         [StringLength(200, MinimumLength = 3, ErrorMessage = "Tên phim từ 3 đến 200 ký tự")]
-        public string Title { get; set; }
+        public string Title { get; set; } = string.Empty;
         
         [Required(ErrorMessage = "Vui lòng chọn ngày phát hành")]
         [DataType(DataType.Date)]
@@ -21,11 +22,12 @@ namespace week6.Models
         public int Duration { get; set; }
         
         [Display(Name = "Thể loại")]
-        public int GenreId { get; set; }
-
         [Range(1, int.MaxValue,
             ErrorMessage = "Vui lòng chọn thể loại")]
+        public int GenreId { get; set; }
+
         [ForeignKey("GenreId")]
-        public Genre Genre { get; set; }        
+        [ValidateNever]
+        public Genre Genre { get; set; } = null!;
     }
 }

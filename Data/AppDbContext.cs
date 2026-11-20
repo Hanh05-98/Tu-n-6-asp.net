@@ -13,4 +13,8 @@ using week6.Models;
         }
 
         public DbSet<week6.Models.Product> Product { get; set; } = default!;
+
+        public DbSet<week6.Models.Genre> Genre { get; set; } = default!;
+
+        public DbSet<week6.Models.Movie> Movie { get; set; } = default!;
     }
