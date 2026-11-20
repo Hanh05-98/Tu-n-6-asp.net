@@ -17,6 +17,7 @@ namespace week6.Models
         [DataType(DataType.Date)]
         public DateTime? ReleaseDate { get; set; }
         
+        
         [Range(1, 600,
             ErrorMessage = "Thời lượng phải từ 1 đến 600 phút.")]
         public int Duration { get; set; }
